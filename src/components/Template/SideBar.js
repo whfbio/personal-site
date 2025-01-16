@@ -9,35 +9,29 @@ const SideBar = () => (
   <section id="sidebar">
     <section id="intro">
       <Link to="/" className="logo">
-        <img src={`${PUBLIC_URL}/images/me.jpg`} alt="" />
+        <img src={`${PUBLIC_URL}/images/me.jpg`} alt="" style={{ width: '200px', height: '200px' }} />
       </Link>
       <header>
-        <h2>Michael D&apos;Angelo</h2>
+        <h2 style={{ fontSize: '24px' }}>HAOFEI WANG</h2>
         <p>
-          <a href="mailto:michael@mldangelo.com">michael@mldangelo.com</a>
+          <a href="mailto:hfwang@email.unc.edu" style={{ fontSize: '16px' }}>hfwang@email.unc.edu</a>
         </p>
       </header>
     </section>
 
     <section className="blurb">
-      <h2>About</h2>
-      <p>
-        Hi, I&apos;m Michael. I am a{' '}
-        <a href="https://icme.stanford.edu/">Stanford ICME</a> graduate, YC
-        alumnus, and the co-founder and CTO of{' '}
-        <a href="https://promptfoo.dev">Promptfoo</a>. Previously, I
-        was VP of Engineering at <a href="https://usesmileid.com">SmileID</a>,
-        co-founder and CTO of <a href="https://arthena.com">Arthena</a>, and
-        co-founded <a href="https://matroid.com">Matroid</a>.
+      <h2 style={{ fontSize: '20px' }}>About</h2>
+      <p style={{ fontSize: '16px' }}>
+        Hi, I&apos;m Haofei. I am a <a href="https://www.med.unc.edu/pathology/directory/haofei-wang-phd/">Research Assistant Professor</a> at the University of North Carolina at Chapel Hill.
       </p>
       <ul className="actions">
         <li>
           {!window.location.pathname.includes('/resume') ? (
-            <Link to="/resume" className="button">
+            <Link to="/resume" className="button" style={{ fontSize: '12px' }}>
               Learn More
             </Link>
           ) : (
-            <Link to="/about" className="button">
+            <Link to="/about" className="button" style={{ fontSize: '12px' }}>
               About Me
             </Link>
           )}
@@ -47,8 +41,8 @@ const SideBar = () => (
 
     <section id="footer">
       <ContactIcons />
-      <p className="copyright">
-        &copy; Michael D&apos;Angelo <Link to="/">mldangelo.com</Link>.
+      <p className="copyright" style={{ fontSize: '14px' }}>
+        &copy; HAOFEI WANG <Link to="/">Haofeiwang.com</Link>.
       </p>
     </section>
   </section>

@@ -11,20 +11,12 @@ const validateText = (text) => {
 
 const messages = [
   'hi',
-  'hello',
+  '你好',
   'hola',
-  'you-can-email-me-at-literally-anything! Really',
-  'well, not anything. But most things',
-  'like-this',
-  'or-this',
-  'but not this :(  ',
-  'you.can.also.email.me.with.specific.topics.like',
-  'just-saying-hi',
-  'please-work-for-us',
-  'help',
-  'admin',
-  'or-I-really-like-your-website',
-  'thanks',
+  'こんにちは',
+  '안녕하세요',
+  'Thanks for visiting my personal website!',
+  'you-can-email-me-at hfwang@email.unc.edu!',
 ];
 
 const useInterval = (callback, delay) => {
@@ -46,33 +38,18 @@ const useInterval = (callback, delay) => {
 };
 
 const EmailLink = ({ loopMessage }) => {
-  const hold = 50; // ticks to wait after message is complete before rendering next message
-  const delay = 50; // tick length in mS
-
-  const [idx, updateIter] = useState(0); // points to current message
-  const [message, updateMessage] = useState(messages[idx]);
-  const [char, updateChar] = useState(0); // points to current char
+  const delay = 2000; // time in milliseconds to wait before showing the next message
+  const [idx, setIdx] = useState(0); // points to current message
   const [isActive, setIsActive] = useState(true); // disable when all messages are printed
 
   useInterval(
     () => {
-      let newIdx = idx;
-      let newChar = char;
-      if (char - hold >= messages[idx].length) {
-        newIdx += 1;
-        newChar = 0;
-      }
-      if (newIdx === messages.length) {
-        if (loopMessage) {
-          updateIter(0);
-          updateChar(0);
-        } else {
-          setIsActive(false);
-        }
+      if (idx < messages.length - 1) {
+        setIdx(idx + 1);
+      } else if (loopMessage) {
+        setIdx(0);
       } else {
-        updateMessage(messages[newIdx].slice(0, newChar));
-        updateIter(newIdx);
-        updateChar(newChar + 1);
+        setIsActive(false);
       }
     },
     isActive ? delay : null,
@@ -81,13 +58,12 @@ const EmailLink = ({ loopMessage }) => {
   return (
     <div
       className="inline-container"
-      style={validateText(message) ? {} : { color: 'red' }}
+      style={validateText(messages[idx]) ? {} : { color: 'red' }}
       onMouseEnter={() => setIsActive(false)}
       onMouseLeave={() => idx < messages.length && setIsActive(true)}
     >
-      <a href={validateText(message) ? `mailto:${message}@mldangelo.com` : ''}>
-        <span>{message}</span>
-        <span>@mldangelo.com</span>
+      <a href="mailto:hfwang@email.unc.edu">
+        <span>{messages[idx]}</span>
       </a>
     </div>
   );
